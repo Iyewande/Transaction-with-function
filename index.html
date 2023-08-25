@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const ussd = Number(
+        prompt(`Welcome, What will you like to do today?
+        1. Airtime-Self
+        2. Airtimes-Others
+        3. Data
+        4. Trs-GTB
+        5. Trsf-Others
+        6. Trsf-MFB
+        7. Quick Transfer
+        8. pay Bills
+        9. Next
+        `)
+      );
+      let pin = 1234;
+      let balance = 5000;
+      if (ussd === 1) {
+        // Airtime Self
+        prompt(`Enter amount`);
+        alert(`Recharge successful`);
+      } else if (ussd === 2) {
+        //AAirtimes others
+        let thirdParty = prompt(
+          "Please type the persons number you wish to recharge for"
+        );
+        let network = Number(
+          prompt(`Please select the Network Provider
+        1. MTN
+        2. Glo
+        3. Airtel
+        4. 9Mobile`)
+        );
+        airtimeamount = Number(prompt("Kindly enter the amount"));
+        alert("Recharge successful");
+      } else if (ussd === 3) {
+        // Data
+        const dataOption = {
+          1: ["100mb", "100"],
+          2: ["500mb", "500"],
+          3: ["1.5Gb", "1000"],
+          4: ["30Gb", "4000"],
+        };
+        const forWho = Number(
+          prompt(`Kindly selesct the recipient
+        1. Self
+        2. Others
+        `)
+        );
+        if (forwho === 1) {
+          const dataAmount = prompt(`please select how much
+            1. 100 for 100mb
+            2. 500 for 500mb
+            3. 1000 for 1.5gb
+            4. 2000 for 2.5gb`);
+          let dataOptionSelection = Number(dataOption[dataAmount][1]);
+          let amountOfData = dataOption[dataAmount][0];
+          if (dataOptionSelection <= balance) {
+            confirm(
+              `recharge ${amountOfData} at rate of ${dataOptionSelection}`
+            );
+            balance -= dataOptionSelection;
+            alert(`Your recharge of ${amountOfData} was successful`);
+            alert(`Your balance is ${balance}`);
+          } else {
+            alert("Insufficient balance");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
